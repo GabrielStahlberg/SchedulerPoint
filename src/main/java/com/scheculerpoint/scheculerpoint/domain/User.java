@@ -1,9 +1,7 @@
 package com.scheculerpoint.scheculerpoint.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.scheculerpoint.scheculerpoint.domain.enumeration.EnumGender;
-import org.hibernate.annotations.LazyToOne;
-import org.hibernate.annotations.LazyToOneOption;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -35,10 +33,11 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private EnumGender gender;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "login_id")
-    @JsonIgnore
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "login_id", nullable = false)
     private Login login;
+
+    //@LazyToOne(LazyToOneOption.NO_PROXY)
 
     public User() {
     }

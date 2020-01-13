@@ -77,7 +77,6 @@ public class UserResource {
         Optional<User> result = service.findById(id);
         if(result.isPresent()) {
             service.update(userModified);
-            URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri();
             return ResponseEntity.ok().body(userModified);
         }
         return ResponseEntity.notFound().build();

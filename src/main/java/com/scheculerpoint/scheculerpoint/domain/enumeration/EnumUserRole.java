@@ -1,8 +1,8 @@
 package com.scheculerpoint.scheculerpoint.domain.enumeration;
 
 public enum EnumUserRole {
-    ADMIN("Administrator"),
-    USER("User");
+    ADMIN("ADMIN"),
+    USER("USER");
 
     private final String value;
 

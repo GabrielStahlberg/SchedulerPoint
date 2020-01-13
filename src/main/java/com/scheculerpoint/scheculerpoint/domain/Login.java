@@ -1,5 +1,7 @@
 package com.scheculerpoint.scheculerpoint.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.scheculerpoint.scheculerpoint.domain.enumeration.EnumUserRole;
 
 import javax.persistence.*;
@@ -9,6 +11,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "tblogin")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Login implements Serializable {
 
     private static final long serialVersionUID = 1L;
