@@ -1,6 +1,7 @@
 package com.scheculerpoint.scheculerpoint.cucumber;
 
 import com.scheculerpoint.scheculerpoint.domain.Login;
+import com.scheculerpoint.scheculerpoint.domain.Movimentation;
 import com.scheculerpoint.scheculerpoint.domain.User;
 import com.scheculerpoint.scheculerpoint.domain.enumeration.EnumGender;
 import com.scheculerpoint.scheculerpoint.domain.enumeration.EnumUserRole;
@@ -11,6 +12,8 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,9 +28,9 @@ public class CucumberMain {
     public void i_have_users_registered() throws Exception {
         restTemplate.delete(url+"/users");
 
-        this.user1 = new User("Gabriel", "gabriel.stahlbergoliveira@amdocs.com", EnumGender.M, new Login("gabriest", "123", EnumUserRole.USER));
-        this.user2 = new User("Letícia", "leticia.bragabueno@gmail.com", EnumGender.F, new Login("leticiabb", "321", EnumUserRole.USER));
-        this.userAdmin = new User("Admin", "admin@amdocs.com", EnumGender.M, new Login("admin", "admin", EnumUserRole.ADMIN));
+        this.user1 = new User("Gabriel", "gabriel.stahlbergoliveira@amdocs.com", EnumGender.M, new Login("gabriest", "123", EnumUserRole.USER), new ArrayList<Movimentation>());
+        this.user2 = new User("Letícia", "leticia.bragabueno@gmail.com", EnumGender.F, new Login("leticiabb", "321", EnumUserRole.USER), new ArrayList<Movimentation>());
+        this.userAdmin = new User("Admin", "admin@amdocs.com", EnumGender.M, new Login("admin", "admin", EnumUserRole.ADMIN), new ArrayList<Movimentation>());
 
         this.user1 = restTemplate.postForEntity(url+"/users", user1, User.class).getBody();
         this.user2 = restTemplate.postForEntity(url+"/users", user2, User.class).getBody();

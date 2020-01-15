@@ -1,0 +1,49 @@
+-> User:
+
+{
+  "name": "Gabriel Stahlberg",
+  "email": "gabriel@gmail.com",
+  "gender": "M",
+  "login": {
+    "username": "gstahlberg",
+    "password": "123",
+    "role": "USER"
+  }
+}
+
+-> Category:
+
+{
+	"name": "Comida",
+	"type": "S"
+}
+
+-> Card
+
+{
+	"number": "0000000000000000",
+	"flag": "ELO",
+	"type": "RE",
+	"avaliableValue": "200.00",
+	"user": {
+		"id": "1"
+	}
+}
+
+-> Movimentation:
+
+{
+	"category": {
+		"id": "1"
+	},
+	"value": "20.59",
+	"description": "Almoço - trabalho",
+	"installmentsQuantity": "1",
+	"user": {
+		"id": "1"
+	},
+	"card": {
+		"id": "1"
+	}
+}
+

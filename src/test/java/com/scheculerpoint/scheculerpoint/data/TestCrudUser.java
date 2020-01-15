@@ -1,6 +1,7 @@
 package com.scheculerpoint.scheculerpoint.data;
 
 import com.scheculerpoint.scheculerpoint.domain.Login;
+import com.scheculerpoint.scheculerpoint.domain.Movimentation;
 import com.scheculerpoint.scheculerpoint.domain.User;
 import com.scheculerpoint.scheculerpoint.domain.enumeration.EnumGender;
 import com.scheculerpoint.scheculerpoint.domain.enumeration.EnumUserRole;
@@ -14,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -34,9 +36,9 @@ public class TestCrudUser {
     @Before
     public void init() {
         repository.deleteAll();
-        user1 = new User("Gabriel", "gabriel.stahlbergoliveira@amdocs.com", EnumGender.M, new Login("gabriest", "123", EnumUserRole.USER));
-        user2 = new User("Letícia", "leticia.bragabueno@gmail.com", EnumGender.F, new Login("leticiabb", "321", EnumUserRole.USER));
-        userAdmin = new User("Admin", "admin@amdocs.com", EnumGender.M, new Login("admin", "admin", EnumUserRole.ADMIN));
+        user1 = new User("Gabriel", "gabriel.stahlbergoliveira@amdocs.com", EnumGender.M, new Login("gabriest", "123", EnumUserRole.USER), new ArrayList<Movimentation>());
+        user2 = new User("Letícia", "leticia.bragabueno@gmail.com", EnumGender.F, new Login("leticiabb", "321", EnumUserRole.USER), new ArrayList<Movimentation>());
+        userAdmin = new User("Admin", "admin@amdocs.com", EnumGender.M, new Login("admin", "admin", EnumUserRole.ADMIN), new ArrayList<Movimentation>());
         repository.save(user1);
         repository.save(user2);
         repository.save(userAdmin);
@@ -83,7 +85,7 @@ public class TestCrudUser {
 
     @Test
     public void save() {
-        User user3 = new User("Marcela", "marcela.stahlbergoliveira@amdocs.com", EnumGender.F, new Login("marcelast", "333", EnumUserRole.USER));
+        User user3 = new User("Marcela", "marcela.stahlbergoliveira@amdocs.com", EnumGender.F, new Login("marcelast", "333", EnumUserRole.USER), new ArrayList<Movimentation>());
         assertNull(user3.getId());
 
         ResponseEntity<User> response = resource.save(user3);
